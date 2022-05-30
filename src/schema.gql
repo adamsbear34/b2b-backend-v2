@@ -1,0 +1,155 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type BusinessRole {
+  id: ID!
+  roleCode: String!
+  roleName: String!
+}
+
+type Country {
+  id: ID!
+  name: String!
+}
+
+input CreateBusinessRoleInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input CreateCountryInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input CreateMediaInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input CreateProfileInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input CreateUserInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input CreateUserRoleInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Media {
+  id: ID!
+  ruTubeUrl: String!
+  telegramUrl: String!
+  tenChatUrl: String!
+  vkUrl: String!
+  youTubeUrl: String!
+}
+
+type Mutation {
+  createBusinessRole(createBusinessRoleInput: CreateBusinessRoleInput!): BusinessRole!
+  createCountry(createCountryInput: CreateCountryInput!): Country!
+  createMedia(createMediaInput: CreateMediaInput!): Media!
+  createProfile(createProfileInput: CreateProfileInput!): Profile!
+  createUser(createUserInput: CreateUserInput!): User!
+  createUserRole(createUserRoleInput: CreateUserRoleInput!): UserRole!
+  removeBusinessRole(id: Int!): BusinessRole!
+  removeCountry(id: Int!): Country!
+  removeMedia(id: Int!): Media!
+  removeProfile(id: Int!): Profile!
+  removeUser(id: Int!): User!
+  removeUserRole(id: Int!): UserRole!
+  updateBusinessRole(updateBusinessRoleInput: UpdateBusinessRoleInput!): BusinessRole!
+  updateCountry(updateCountryInput: UpdateCountryInput!): Country!
+  updateMedia(updateMediaInput: UpdateMediaInput!): Media!
+  updateProfile(updateProfileInput: UpdateProfileInput!): Profile!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+  updateUserRole(updateUserRoleInput: UpdateUserRoleInput!): UserRole!
+}
+
+type Profile {
+  avatarUrl: String!
+  id: ID!
+}
+
+type Query {
+  businessRole(id: Int!): BusinessRole!
+  country(id: Int!): Country!
+  media(id: Int!): Media!
+  profile(id: Int!): Profile!
+  user(id: Int!): User!
+  userRole(id: Int!): UserRole!
+  users: [User!]!
+}
+
+input UpdateBusinessRoleInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input UpdateCountryInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input UpdateMediaInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input UpdateProfileInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input UpdateUserInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input UpdateUserRoleInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+"""user"""
+type User {
+  businessRole: BusinessRole!
+  country: Country!
+  email: String!
+  firstName: String!
+  id: ID!
+  lastLoginAt: DateTime!
+  lastName: String!
+  lastUpdateAt: DateTime!
+  media: Media!
+  password: String!
+  phone: String!
+  profile: Profile!
+  registeredDate: DateTime!
+  userName: String!
+  userRole: UserRole!
+}
+
+type UserRole {
+  id: ID!
+  roleCode: String!
+  roleName: String!
+}
