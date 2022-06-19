@@ -12,6 +12,7 @@ import { BusinessRoleModule } from './users/business-role/business-role.module';
 import { UserRoleModule } from './users/user-role/user-role.module';
 import { MediaModule } from './media/media.module';
 import { CountryModule } from './country/country.module';
+import { AuthModule } from './auth/auth.module';
 import ormconfig from './config/ormconfig';
 
 @Module({
@@ -20,8 +21,8 @@ import ormconfig from './config/ormconfig';
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       sortSchema: true,
-      playground: true,
-      // plugins: [ApolloServerPluginLandingPageLocalDefault()],
+      playground: false,
+      plugins: [ApolloServerPluginLandingPageLocalDefault()],
     }),
     TypeOrmModule.forRoot(ormconfig),
     UsersModule,
@@ -30,6 +31,7 @@ import ormconfig from './config/ormconfig';
     UserRoleModule,
     MediaModule,
     CountryModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -13,7 +13,7 @@ export class UserRoleResolver {
     return this.userRoleService.create(createUserRoleInput);
   }
 
-  @Query(() => [UserRole], { name: 'userRole' })
+  @Query(() => [UserRole], { name: 'userRoles' })
   findAll() {
     return this.userRoleService.findAll();
   }
@@ -25,7 +25,10 @@ export class UserRoleResolver {
 
   @Mutation(() => UserRole)
   updateUserRole(@Args('updateUserRoleInput') updateUserRoleInput: UpdateUserRoleInput) {
-    return this.userRoleService.update(updateUserRoleInput.id, updateUserRoleInput);
+    return this.userRoleService.update(
+      updateUserRoleInput.id,
+      updateUserRoleInput,
+    );
   }
 
   @Mutation(() => UserRole)

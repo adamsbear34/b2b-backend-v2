@@ -33,11 +33,6 @@ input CreateProfileInput {
   exampleField: Int!
 }
 
-input CreateUserInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
-}
-
 input CreateUserRoleInput {
   """Example field (placeholder)"""
   exampleField: Int!
@@ -47,6 +42,16 @@ input CreateUserRoleInput {
 A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
 """
 scalar DateTime
+
+type LoginResponse {
+  accessToken: String!
+  user: User!
+}
+
+input LoginUserRequest {
+  email: String!
+  password: String!
+}
 
 type Media {
   id: ID!
@@ -62,7 +67,6 @@ type Mutation {
   createCountry(createCountryInput: CreateCountryInput!): Country!
   createMedia(createMediaInput: CreateMediaInput!): Media!
   createProfile(createProfileInput: CreateProfileInput!): Profile!
-  createUser(createUserInput: CreateUserInput!): User!
   createUserRole(createUserRoleInput: CreateUserRoleInput!): UserRole!
   removeBusinessRole(id: Int!): BusinessRole!
   removeCountry(id: Int!): Country!
@@ -70,6 +74,8 @@ type Mutation {
   removeProfile(id: Int!): Profile!
   removeUser(id: Int!): User!
   removeUserRole(id: Int!): UserRole!
+  signIn(loginUserRequest: LoginUserRequest!): LoginResponse
+  signUp(registerUserRequest: RegisterUserRequest!): RegisterUserResponse
   updateBusinessRole(updateBusinessRoleInput: UpdateBusinessRoleInput!): BusinessRole!
   updateCountry(updateCountryInput: UpdateCountryInput!): Country!
   updateMedia(updateMediaInput: UpdateMediaInput!): Media!
@@ -90,7 +96,20 @@ type Query {
   profile(id: Int!): Profile!
   user(id: Int!): User!
   userRole(id: Int!): UserRole!
+  userRoles: [UserRole!]!
   users: [User!]!
+}
+
+input RegisterUserRequest {
+  email: String!
+  firstName: String!
+  password: String!
+  userRoleId: Float!
+}
+
+type RegisterUserResponse {
+  accessToken: String!
+  user: User!
 }
 
 input UpdateBusinessRoleInput {
@@ -118,9 +137,10 @@ input UpdateProfileInput {
 }
 
 input UpdateUserInput {
-  """Example field (placeholder)"""
-  exampleField: Int
+  email: String
+  firstName: String
   id: Int!
+  password: String
 }
 
 input UpdateUserRoleInput {
@@ -131,21 +151,21 @@ input UpdateUserRoleInput {
 
 """user"""
 type User {
-  businessRole: BusinessRole!
-  country: Country!
+  businessRole: BusinessRole
+  country: Country
   email: String!
   firstName: String!
   id: ID!
-  lastLoginAt: DateTime!
-  lastName: String!
+  lastLoginAt: DateTime
+  lastName: String
   lastUpdateAt: DateTime!
-  media: Media!
+  media: Media
   password: String!
-  phone: String!
-  profile: Profile!
+  phone: String
+  profile: Profile
   registeredDate: DateTime!
   userName: String!
-  userRole: UserRole!
+  userRole: UserRole
 }
 
 type UserRole {
